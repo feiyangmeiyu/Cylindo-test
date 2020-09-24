@@ -9,20 +9,59 @@ body {
   width: 1000px;
   background-size: cover;
   background-repeat: no-repeat;
+  position: relative;
+  opacity: 0.7;
 }
 
 .overlay {
   top: 0;
   left: 0;
   width: 100%;
-  background: rgba(123, 128, 119, 0.6);
+  /* background: rgba(123, 128, 119, 0.5) !important; */
   min-height: 800px;
   height: auto;
+  background-color: rgba(0, 0, 0, 0.5) !important;
+  background-color: #000;
+  filter: Alpha(opacity=50);
 }
 
 .detail-rec {
   position: absolute;
   border: green 3px solid;
   border-radius: 5px;
-  background: rgba(123, 128, 119, 1);
+  /* background: rgba(123, 128, 119, 1); */
+  cursor: pointer;
+  opacity: 1;
+}
+
+.detail-rec span {
+  position: absolute;
+  border-style: solid;
+  border-color: green;
+  padding: 5px;
+}
+
+.detail-rec span:nth-child(1) {
+  left: -7px;
+  top: -7px;
+  border-width: 3px 0 0 3px;
+  cursor: nw-resize;
+}
+.detail-rec span:nth-child(2) {
+  right: -7px;
+  top: -7px;
+  border-width: 3px 3px 0 0;
+  cursor: ne-resize;
+}
+.detail-rec span:nth-child(3) {
+  right: -7px;
+  bottom: -7px;
+  border-width: 0 3px 3px 0;
+  cursor: se-resize;
+}
+.detail-rec span:nth-child(4) {
+  left: -7px;
+  bottom: -7px;
+  border-width: 0 0 3px 3px;
+  cursor: sw-resize;
 }
