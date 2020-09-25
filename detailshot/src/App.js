@@ -58,18 +58,6 @@ class App extends Component {
     e.persist();
     const { startX, startY, endX, endY } = this.state;
 
-    // How far between the place you choose and the shot edge
-    // const diffStartX = e.clientX - startX;
-    // const diffEndX = e.clientX - endX;
-    // const diffStartY = e.clientY - startY;
-    // const diffEndY = e.clientY - endY;
-
-    // console.log("diff", diffStartY, diffStartY, diffEndX, diffEndY);
-
-    // When the mouse is clicked on the edge, ready for resizing
-    // if (this.isClose(diffStartX, diffEndX, diffStartY, diffEndY)) {
-    //   this.startResize(diffStartX, diffEndX, diffStartY, diffEndY);
-    // } else
     if (
       //If the place chosen is not in the detail shot area, then set the start coord again
       (e.clientX < startX || e.clientX > endX) &&
@@ -125,7 +113,6 @@ class App extends Component {
   }
 
   handleInside(dragStartX, dragStartY) {
-    console.log("Drag Start");
     this.setState({
       dragStartX: dragStartX,
       dragStartY: dragStartY,
@@ -135,44 +122,9 @@ class App extends Component {
 
   handleEdge(direct) {
     this.setState({ resizeDirect: direct });
-    console.log("set direction to:", direct);
   }
 
-  // isClose(diffStartX, diffEndX, diffStartY, diffEndY) {
-  //   if (
-  //     (Math.abs(diffStartX) < 10 || Math.abs(diffEndX) < 10) &&
-  //     (Math.abs(diffStartY) < 10 || Math.abs(diffEndY) < 10)
-  //   ) {
-  //     return true;
-  //   } else return false;
-  // }
-
-  // Define resize direction
-
-  // const diffStartX = e.clientX - startX;
-  //   const diffEndX = e.clientX - endX;
-  //   const diffStartY = e.clientY - startY;
-  //   const diffEndY = e.clientY - endY;
-
-  // startResize(diffStartX, diffEndX, diffStartY, diffEndY) {
-  //   if (Math.abs(diffEndX) < 10 && Math.abs(diffStartY)) {
-  //     this.setState({ resizeDirect: "rightTop" });
-  //   } else if (Math.abs(diffEndX) < 10 && Math.abs(diffEndY)) {
-  //     this.setState({ resizeDirect: "rightBottom" });
-  //   } else if (Math.abs(diffStartX) < 10 && Math.abs(diffStartY)) {
-  //     this.setState({ resizeDirect: "leftTop" });
-  //   } else {
-  //     this.setState({ resizeDirect: "leftBottom" });
-  //   }
-  // }
-
   handleResize(X, Y) {
-    const diffStartX = X - this.state.startX;
-    const diffEndX = X - this.state.endX;
-    const diffStartY = Y - this.state.startY;
-    const diffEndY = Y - this.state.endY;
-
-    console.log("diff:", diffStartX, diffEndX, diffStartY, diffEndY);
     switch (this.state.resizeDirect) {
       case "rightTop":
         this.setState({ endX: X, startY: Y });
@@ -185,6 +137,8 @@ class App extends Component {
         break;
       case "leftBottom":
         this.setState({ startX: X, endY: Y });
+        break;
+      default:
         break;
     }
   }
