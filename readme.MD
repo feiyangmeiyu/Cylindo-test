@@ -19,7 +19,7 @@ npm start
 
 - Use mouse to drag a rectangle.
 - Once the rectangle is formed, you can drag it without changing the height and width.
-- Use the four resize (topright, topleft, bottomright, bottomleft) to resize the chosen rectangle area.
+- Use the four resize handlers in the four corners (topright, topleft, bottomright, bottomleft) to resize the chosen rectangle area.
 
 ---
 
