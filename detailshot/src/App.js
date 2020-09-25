@@ -85,24 +85,22 @@ class App extends Component {
   }
 
   handleMouseUp(e) {
-    console.log(e);
     e.persist();
     e.preventDefault();
-    console.log("mouse up");
+
     if (this.state.insideShot) {
-      console.log("Handle dragging");
       // if the mouse is released when doing dragging
       const dragX = e.clientX - this.state.dragStartX;
       const dragY = e.clientY - this.state.dragStartY;
       this.handleDrag(dragX, dragY);
     } else if (this.state.resizeDirect !== "none") {
       // if the mouse is released when doing resizing
-      console.log("Direction is not none, ready to resize...");
+
       this.handleResize(e.clientX, e.clientY);
       this.setState({ resizeDirect: "none" });
     } else {
       // if the mouse is released when at fisrt choosing the short area
-      console.log("lala");
+
       const width = e.clientX - this.state.startX;
       const height = e.clientY - this.state.startY;
 
@@ -113,7 +111,6 @@ class App extends Component {
   }
 
   handleDrag(dragX, dragY) {
-    console.log("Drag Stop");
     this.setState({
       startX: this.state.startX + dragX,
       endX: this.state.endX + dragX,

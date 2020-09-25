@@ -17,13 +17,19 @@ body {
   top: 0;
   left: 0;
   width: 100%;
-  /* background: rgba(123, 128, 119, 0.5) !important; */
+
   min-height: 800px;
   height: auto;
-  background-color: rgba(0, 0, 0, 0.5) !important;
+  /* position: relative; */
+  background-color: rgba(0, 0, 0, 0.1) !important;
+  /*
   background-color: #000;
-  filter: Alpha(opacity=50);
+  filter: Alpha(opacity=50); */
 }
+
+/* :not(.detail-rec) {
+  background: rgba(123, 128, 119, 0.1);
+} */
 
 .detail-rec {
   position: absolute;
