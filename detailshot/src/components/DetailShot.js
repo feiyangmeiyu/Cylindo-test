@@ -10,7 +10,6 @@ class DetailShot extends Component {
     this.startResizeBottomR = this.startResizeBottomR.bind(this);
     this.startResizeBottomL = this.startResizeBottomL.bind(this);
   }
-  componentDidUpdate() {}
 
   render() {
     const { top, left, height, width } = this.props;
@@ -32,7 +31,7 @@ class DetailShot extends Component {
   handleMouseDown(e) {
     e.stopPropagation();
 
-    this.props.handleInside(e.clientX, e.clientY);
+    this.props.handleInside(e.pageX, e.pageY);
   }
 
   startResizeTopL(e) {

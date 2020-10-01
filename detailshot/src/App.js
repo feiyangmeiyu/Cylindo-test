@@ -11,10 +11,12 @@ class App extends Component {
       startY: 0,
       endX: 0,
       endY: 0,
-      // height: 0,
-      // width: 0,
+
       insideShot: false,
       resizeDirect: "none",
+      // store five possible directions:
+      //["rightTop", "rightBottom", "leftTop", "leftBottom"]
+
       dragStartX: 0,
       dragStartY: 0,
     };
@@ -57,17 +59,17 @@ class App extends Component {
   handleMouseDown(e) {
     e.persist();
     const { startX, startY, endX, endY } = this.state;
-
+    console.log(e.pageX, e.pageY);
     if (
       //If the place chosen is not in the detail shot area, then set the start coord again
-      (e.clientX < startX || e.clientX > endX) &&
-      (e.clientY < startY || e.clientX > endY)
+      (e.pageX < startX || e.pageX > endX) &&
+      (e.pageY < startY || e.pageX > endY)
     ) {
       this.setState({
-        startX: e.clientX,
-        startY: e.clientY,
-        endX: e.clientX,
-        endY: e.clientY,
+        startX: e.pageX,
+        startY: e.pageY,
+        endX: e.pageX,
+        endY: e.pageY,
       });
     }
   }
@@ -78,22 +80,22 @@ class App extends Component {
 
     if (this.state.insideShot) {
       // if the mouse is released when doing dragging
-      const dragX = e.clientX - this.state.dragStartX;
-      const dragY = e.clientY - this.state.dragStartY;
+      const dragX = e.pageX - this.state.dragStartX;
+      const dragY = e.pageY - this.state.dragStartY;
       this.handleDrag(dragX, dragY);
     } else if (this.state.resizeDirect !== "none") {
       // if the mouse is released when doing resizing
 
-      this.handleResize(e.clientX, e.clientY);
+      this.handleResize(e.pageX, e.pageY);
       this.setState({ resizeDirect: "none" });
     } else {
-      // if the mouse is released when at fisrt choosing the short area
+      // if the mouse is released when at first choosing the detail-shot area
 
-      const width = e.clientX - this.state.startX;
-      const height = e.clientY - this.state.startY;
+      const width = e.pageX - this.state.startX;
+      const height = e.pageY - this.state.startY;
 
       if (width > 0 && height > 0) {
-        this.setState({ endX: e.clientX, endY: e.clientY });
+        this.setState({ endX: e.pageX, endY: e.pageY });
       }
     }
   }
@@ -157,6 +159,8 @@ class App extends Component {
     // Google support, firefox do not support
     e.cancelBubble = true;
     e.returnValue = false;
+
+    return false;
   }
 }
 

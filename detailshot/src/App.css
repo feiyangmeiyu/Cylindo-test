@@ -45,27 +45,36 @@ body {
   position: absolute;
   border-style: solid;
   border-color: green;
-  padding: 5px;
+  padding: 7px;
 }
 
+/*Resize Handler*/
+
+/* TopLeft */
 .detail-rec span:nth-child(1) {
   left: -7px;
   top: -7px;
   border-width: 3px 0 0 3px;
   cursor: nw-resize;
 }
+
+/*TopRight*/
 .detail-rec span:nth-child(2) {
   right: -7px;
   top: -7px;
   border-width: 3px 3px 0 0;
   cursor: ne-resize;
 }
+
+/*BottomRight*/
 .detail-rec span:nth-child(3) {
   right: -7px;
   bottom: -7px;
   border-width: 0 3px 3px 0;
   cursor: se-resize;
 }
+
+/*BottomLeft*/
 .detail-rec span:nth-child(4) {
   left: -7px;
   bottom: -7px;
