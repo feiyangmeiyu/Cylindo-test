@@ -59,7 +59,7 @@ class App extends Component {
   handleMouseDown(e) {
     e.persist();
     const { startX, startY, endX, endY } = this.state;
-    console.log(e.pageX, e.pageY);
+    //console.log(e.pageX, e.pageY);
     if (
       //If the place chosen is not in the detail shot area, then set the start coord again
       (e.pageX < startX || e.pageX > endX) &&
@@ -91,12 +91,38 @@ class App extends Component {
     } else {
       // if the mouse is released when at first choosing the detail-shot area
 
-      const width = e.pageX - this.state.startX;
-      const height = e.pageY - this.state.startY;
+      this.setState({
+        startX: this.state.startX > e.pageX ? e.pageX : this.state.startX,
+        startY: this.state.startY > e.pageY ? e.pageY : this.state.startY,
+        endX: this.state.startX > e.pageX ? this.state.startX : e.pageX,
+        endY: this.state.startY > e.pageY ? this.state.startY : e.pageY,
+      });
+      // const width = e.pageX - this.state.startX;
+      // const height = e.pageY - this.state.startY;
 
-      if (width > 0 && height > 0) {
-        this.setState({ endX: e.pageX, endY: e.pageY });
-      }
+      // if (width > 0 && height > 0) {
+      //   this.setState({ endX: e.pageX, endY: e.pageY });
+      // } else if (width < 0 && height < 0) {
+      //   this.setState({
+      //     endX: this.state.startX,
+      //     endY: this.state.startY,
+      //     startX: e.pageX,
+      //     startY: e.pageY,
+      //   });
+      // } else if (width > 0 && height < 0) {
+      //   this.setState({
+      //     endX: e.pageX,
+      //     startY: e.pageY,
+      //     endY: this.state.startY,
+      //   });
+      // } else if (width < 0 && height > 0) {
+      //   this.setState({
+      //     startX: e.pageX,
+      //     endX: this.state.startX,
+      //     endY: e.pageY,
+      //   });
+      // }
+      // start(0,1), end(1,0)
     }
   }
 

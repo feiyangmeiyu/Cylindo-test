@@ -5,7 +5,7 @@
 ```
 git clone https://github.com/feiyangmeiyu/Cylindo-test.git
 
-cd detailshot
+cd Cylindo-test/detailshot
 npm install
 ```
 
